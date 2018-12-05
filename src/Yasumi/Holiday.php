@@ -55,7 +55,7 @@ class Holiday extends DateTime implements JsonSerializable
     /**
      * @var array list of all defined locales
      */
-    private static $locales;
+    private static $locales = [];
 
     /**
      * @var string short name (internal name) of this holiday
@@ -96,6 +96,7 @@ class Holiday extends DateTime implements JsonSerializable
      * @throws \Yasumi\Exception\InvalidDateException
      * @throws UnknownLocaleException
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     public function __construct(
         string $shortName,
@@ -110,7 +111,7 @@ class Holiday extends DateTime implements JsonSerializable
         }
 
         // Load internal locales variable
-        if (null === self::$locales) {
+        if (empty(self::$locales)) {
             self::$locales = Yasumi::getAvailableLocales();
         }
 
@@ -144,7 +145,7 @@ class Holiday extends DateTime implements JsonSerializable
      *
      * @return $this
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): self
     {
         return $this;
     }
@@ -158,15 +159,7 @@ class Holiday extends DateTime implements JsonSerializable
      */
     public function getName(): string
     {
-        if (isset($this->translations[$this->displayLocale])) {
-            return $this->translations[$this->displayLocale];
-        }
-
-        if (isset($this->translations[self::DEFAULT_LOCALE])) {
-            return $this->translations[self::DEFAULT_LOCALE];
-        }
-
-        return $this->shortName;
+        return $this->translations[$this->displayLocale] ?? $this->translations[self::DEFAULT_LOCALE] ?? $this->shortName;
     }
 
     /**
@@ -187,6 +180,6 @@ class Holiday extends DateTime implements JsonSerializable
      */
     public function __toString(): string
     {
-        return (string)$this->format('Y-m-d');
+        return $this->format('Y-m-d');
     }
 }

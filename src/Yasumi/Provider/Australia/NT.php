@@ -49,6 +49,11 @@ class NT extends Australia
         $this->calculatePicnicDay();
     }
 
+    /**
+     * May Day
+     *
+     * @throws \Exception
+     */
     public function calculateMayDay()
     {
         $date = new DateTime("first monday of may $this->year", new DateTimeZone($this->timezone));
@@ -96,7 +101,7 @@ class NT extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function easterSaturday($year, $timezone, $locale, $type = Holiday::TYPE_OFFICIAL)
+    public function easterSaturday($year, $timezone, $locale, $type = Holiday::TYPE_OFFICIAL): Holiday
     {
         return new Holiday(
             'easterSaturday',

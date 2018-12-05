@@ -39,6 +39,7 @@ class Russia extends AbstractProvider
      * Initialize holidays for Russia.
      *
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     public function initialize()
     {
@@ -58,6 +59,7 @@ class Russia extends AbstractProvider
 
     /**
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     private function addNewYearsHolidays()
     {
@@ -67,23 +69,25 @@ class Russia extends AbstractProvider
             $this->addHoliday(new Holiday('newYearHolidaysDay' . $day, [
                 'en_US' => 'New Year\'s holidays',
                 'ru_RU' => 'Новогодние каникулы'
-            ], new \DateTime("{$this->year}-01-{$day}", new \DateTimeZone($this->timezone))));
+            ], new \DateTime("{$this->year}-01-{$day}", new \DateTimeZone($this->timezone)), $this->locale));
         }
     }
 
     /**
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     private function addOrthodoxChristmasDay()
     {
         $this->addHoliday(new Holiday('orthodoxChristmasDay', [
             'en_US' => 'Orthodox Christmas Day',
             'ru_RU' => 'Рождество'
-        ], new \DateTime("{$this->year}-01-07", new \DateTimeZone($this->timezone))));
+        ], new \DateTime("{$this->year}-01-07", new \DateTimeZone($this->timezone)), $this->locale));
     }
 
     /**
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     private function addDefenceOfTheFatherlandDay()
     {
@@ -94,44 +98,48 @@ class Russia extends AbstractProvider
         $this->addHoliday(new Holiday('defenceOfTheFatherlandDay', [
             'en_US' => 'Defence of the Fatherland Day',
             'ru_RU' => 'День защитника Отечества'
-        ], new \DateTime("{$this->year}-02-23", new \DateTimeZone($this->timezone))));
+        ], new \DateTime("{$this->year}-02-23", new \DateTimeZone($this->timezone)), $this->locale));
     }
 
     /**
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     private function addInternationalWomensDay()
     {
         $this->addHoliday(new Holiday('internationalWomensDay', [
             'en_US' => 'International Women\'s Day',
             'ru_RU' => 'Международный женский день'
-        ], new \DateTime("{$this->year}-03-08", new \DateTimeZone($this->timezone))));
+        ], new \DateTime("{$this->year}-03-08", new \DateTimeZone($this->timezone)), $this->locale));
     }
 
     /**
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     private function addSpringAndLabourDay()
     {
         $this->addHoliday(new Holiday('springAndLabourDay', [
             'en_US' => 'Spring and Labour Day',
             'ru_RU' => 'Праздник Весны и Труда'
-        ], new \DateTime("{$this->year}-05-01", new \DateTimeZone($this->timezone))));
+        ], new \DateTime("{$this->year}-05-01", new \DateTimeZone($this->timezone)), $this->locale));
     }
 
     /**
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     private function addVictoryDay()
     {
         $this->addHoliday(new Holiday('victoryDay', [
             'en_US' => 'Victory Day',
             'ru_RU' => 'День Победы'
-        ], new \DateTime("{$this->year}-05-09", new \DateTimeZone($this->timezone))));
+        ], new \DateTime("{$this->year}-05-09", new \DateTimeZone($this->timezone)), $this->locale));
     }
 
     /**
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     private function addRussiaDay()
     {
@@ -142,11 +150,12 @@ class Russia extends AbstractProvider
         $this->addHoliday(new Holiday('russiaDay', [
             'en_US' => 'Russia Day',
             'ru_RU' => 'День России'
-        ], new \DateTime("{$this->year}-06-12", new \DateTimeZone($this->timezone))));
+        ], new \DateTime("{$this->year}-06-12", new \DateTimeZone($this->timezone)), $this->locale));
     }
 
     /**
      * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     private function addUnityDay()
     {
@@ -157,6 +166,6 @@ class Russia extends AbstractProvider
         $this->addHoliday(new Holiday('unityDay', [
             'en_US' => 'Unity Day',
             'ru_RU' => 'День народного единства'
-        ], new \DateTime("{$this->year}-11-04", new \DateTimeZone($this->timezone))));
+        ], new \DateTime("{$this->year}-11-04", new \DateTimeZone($this->timezone)), $this->locale));
     }
 }

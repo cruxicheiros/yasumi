@@ -12,7 +12,6 @@
 
 namespace Yasumi\Provider\Australia;
 
-use DateInterval;
 use DateTime;
 use DateTimeZone;
 use Yasumi\Holiday;
@@ -48,6 +47,11 @@ class Tasmania extends Australia
         $this->calculateRecreationDay();
     }
 
+    /**
+     * Eight Hours Day
+     *
+     * @throws \Exception
+     */
     public function calculateEightHoursDay()
     {
         $date = new DateTime("second monday of march $this->year", new DateTimeZone($this->timezone));

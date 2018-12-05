@@ -51,6 +51,11 @@ class ACT extends Australia
         $this->calculateReconciliationDay();
     }
 
+    /**
+     * Canberra Day
+     *
+     * @throws \Exception
+     */
     public function calculateCanberraDay()
     {
         if ($this->year < 2007) {
@@ -60,21 +65,31 @@ class ACT extends Australia
         }
         $this->addHoliday(new Holiday('canberraDay', ['en_AU' => 'Canberra Day'], $date, $this->locale));
     }
-    
+
+    /**
+     * Reconciliation Day
+     *
+     * @throws \Exception
+     */
     public function calculateReconciliationDay()
     {
         if ($this->year < 2018) {
             return;
-        } else {
-            $date = new DateTime($this->year."-05-27", new DateTimeZone($this->timezone));
-            $day = (int)$date->format('w');
-            if ($day !== 1) {
-                $date = $date->add($day === 0 ? new DateInterval('P1D') : new DateInterval('P'.(8-$day).'D'));
-            }
-            $this->addHoliday(new Holiday('reconciliationDay', ['en_AU' => 'Reconciliation Day'], $date, $this->locale));
         }
+
+        $date = new DateTime($this->year . '-05-27', new DateTimeZone($this->timezone));
+        $day  = (int)$date->format('w');
+        if ($day !== 1) {
+            $date = $date->add($day === 0 ? new DateInterval('P1D') : new DateInterval('P'.(8-$day).'D'));
+        }
+        $this->addHoliday(new Holiday('reconciliationDay', ['en_AU' => 'Reconciliation Day'], $date, $this->locale));
     }
-    
+
+    /**
+     * Labour Day
+     *
+     * @throws \Exception
+     */
     public function calculateLabourDay()
     {
         $date = new DateTime("first monday of october $this->year", new DateTimeZone($this->timezone));
@@ -103,7 +118,7 @@ class ACT extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function easterSaturday($year, $timezone, $locale, $type = Holiday::TYPE_OFFICIAL)
+    public function easterSaturday($year, $timezone, $locale, $type = Holiday::TYPE_OFFICIAL): Holiday
     {
         return new Holiday(
             'easterSaturday',
@@ -135,7 +150,7 @@ class ACT extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function easterSunday($year, $timezone, $locale, $type = Holiday::TYPE_OFFICIAL)
+    public function easterSunday($year, $timezone, $locale, $type = Holiday::TYPE_OFFICIAL): Holiday
     {
         return new Holiday(
             'easter',

@@ -12,7 +12,6 @@
 
 namespace Yasumi\Provider\Australia;
 
-use DateInterval;
 use DateTime;
 use DateTimeZone;
 use Yasumi\Holiday;
@@ -47,6 +46,11 @@ class Queensland extends Australia
         $this->calculateLabourDay();
     }
 
+    /**
+     * Labour Day
+     *
+     * @throws \Exception
+     */
     public function calculateLabourDay()
     {
         if ($this->year === 2013 || $this->year === 2014 || $this->year === 2015) {

@@ -12,7 +12,6 @@
 
 namespace Yasumi\Provider\Australia\Tasmania;
 
-use DateInterval;
 use DateTime;
 use DateTimeZone;
 use Yasumi\Holiday;
@@ -46,7 +45,12 @@ class CentralNorth extends Tasmania
 
         $this->calculateDevonportShow();
     }
-    
+
+    /**
+     * Devonport Show
+     *
+     * @throws \Exception
+     */
     public function calculateDevonportShow()
     {
         $date = new DateTime($this->year . '-12-02', new DateTimeZone($this->timezone));
