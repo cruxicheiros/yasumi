@@ -19,6 +19,9 @@ use Yasumi\Holiday;
 
 /**
  * Provider for all holidays in Canada.
+ *
+ * Please note that this provider is not historically accurate and should not be used to definitively
+ * find dates of holidays that happened in the past.
  */
 class Canada extends AbstractProvider
 {
@@ -63,48 +66,34 @@ class Canada extends AbstractProvider
          * https://en.wikipedia.org/wiki/Canada_Day
          */
 
-        if ($this->year >= 1868 && $this->year <= 1879) {
-            $this->addHoliday(new Holiday('anniversaryOfConfederation', [
-                'fr_CA' => 'Jour Anniversaire de la Confédération',
-                'en_CA' => 'Anniversary of Confederation',
-                'en_US' => 'Anniversary of Confederation'
-            ], new DateTime("$this->year-7-1", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_OBSERVANCE));
-        } else if ($this->year > 1879 && $this->year <= 1982) {
-            $this->addHoliday(new Holiday('dominionDay', [
-                'fr_CA' => 'Fête du Dominion',
-                'en_CA' => 'Dominion Day',
-                'en_US' => 'Dominion Day'
-            ], new DateTime("$this->year-7-1", new DateTimeZone($this->timezone)), $this->locale));
-        } else if ($this->year > 1982) {
-            $this->addHoliday(new Holiday('canadaDay', [
-                'fr_CA' => 'Fête du Canada',
-                'en_CA' => 'Canada Day',
-                'en_US' => 'Canada Day'
-            ], new DateTime("$this->year-7-1", new DateTimeZone($this->timezone)), $this->locale));
-        }
+
+        $this->addHoliday(new Holiday('canadaDay', [
+            'fr_CA' => 'Fête du Canada',
+            'en_CA' => 'Canada Day',
+            'en_US' => 'Canada Day'
+        ], new DateTime("$this->year-7-1", new DateTimeZone($this->timezone)), $this->locale));
 
         /**
          * Labour Day.
          *
-         * Labour Day in Canada is held on the first Monday of September.
+         * Labour Day in Canada is held on the first Monday of September. It was instituted in 1894.
          * It is an annual holiday to celebrate the achievements of workers.
          * https://en.wikipedia.org/wiki/Labour_Day#Canada
          */
-        if ($this->year >= 1894) {
-            $this->addHoliday(new Holiday('labourDay', [
-                'fr_CA' => 'Fête du travail',
-                'en_CA' => 'Labour Day',
-                'en_US' => 'Labour Day'
-            ], new DateTime("first monday of september $this->year", new DateTimeZone($this->timezone)), $this->locale));
-        }
+        $this->addHoliday(new Holiday('labourDay', [
+            'fr_CA' => 'Fête du travail',
+            'en_CA' => 'Labour Day',
+            'en_US' => 'Labour Day'
+        ], new DateTime("first monday of september $this->year", new DateTimeZone($this->timezone)), $this->locale));
 
         /*
          * Holidays for federal employees
+         *
+         * Some holidays are mandatory for employees of the federal government but not others.
          */
 
         $this->addHoliday($this->easterMonday($this->year, $this->timezone, $this->locale, Holiday::TYPE_BANK));
         $this->addHoliday($this->secondChristmasDay($this->year, $this->timezone, $this->locale, Holiday::TYPE_BANK));
-
 
         /**
          * Thanksgiving.
@@ -116,63 +105,35 @@ class Canada extends AbstractProvider
          * https://en.wikipedia.org/wiki/Thanksgiving_(Canada)
          */
 
-        if ($this->year > 1879 && $this->year < 1957) {
-            $this->addHoliday(new Holiday( 'thanksgiving', [
-                'fr_CA' => 'Action de grâce',
-                'en_CA' => 'Thanksgiving',
-                'en_US' => 'Thanksgiving'
-            ], new DateTime("third monday of october $this->year", $this->timezone, $this->locale, Holiday::TYPE_BANK)));
-        } else if ($this->year >= 1957) {
-            $this->addHoliday(new Holiday( 'thanksgiving', [
-                'fr_CA' => 'Action de grâce',
-                'en_CA' => 'Thanksgiving',
-                'en_US' => 'Thanksgiving'
-            ], new DateTime("second monday of october $this->year", $this->timezone, $this->locale, Holiday::TYPE_BANK)));
-        }
+        $this->addHoliday(new Holiday( 'thanksgiving', [
+            'fr_CA' => 'Action de grâce',
+            'en_CA' => 'Thanksgiving',
+            'en_US' => 'Thanksgiving'
+        ], new DateTime("second monday of october $this->year", $this->timezone)), $this->locale, Holiday::TYPE_BANK);
 
         /**
          * Victoria Day.
          *
          * Victoria Day commemorates Queen Victoria's birthday. The current date of Victoria Day, the Monday before
-         * May 25, was set to begin in 1953. For other dates, see the below links.
-         *
-         * King Edward VII died on 6 May 1910.
-         * King George V died on 20 January 1936.
-         * King Edward VIII abdicated on 11 December 1936.
-         * King George V died on 6 February 1952.
-         * In 1953, the date of Victoria Day was set.
+         * May 25, was set to begin in 1953, and coincides with the celebration of the sovereign's birthday.
          *
          * https://www.canada.ca/en/canadian-heritage/services/important-commemorative-days/victoria-day.html
          * https://en.wikipedia.org/wiki/Victoria_Day
          */
 
-        $sovereignBirthdayTranslations = [
+        $this->addHoliday(new Holiday('sovereignsBirthday', [
             'fr_CA' => 'Fête du souverain',
             'en_CA' => 'Sovereign\'s Birthday',
             'en_US' => 'Sovereign\'s Birthday'
-        ];
+        ], new DateTime("previous monday may 25 2018", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_OBSERVANCE));
 
-        $victoriaDayTranslations = [
+
+
+        $this->addHoliday(new Holiday('victoriaDay', [
             'fr_CA' => 'Jour de Victoria',
             'en_CA' => 'Victoria Day',
             'en_US' => 'Victoria Day'
-        ];
-
-        if ($this->year >= 1837 && $this->year < 1845) {  // Queen Victoria's reign, unofficially observed
-
-        } else if ($this->year >= 1845 && $this->year < 1867) {  // Queen Victoria's reign, unofficially observed
-
-        } else if ($this->year >= 1867 && $this->year < 1901) {  // Queen Victoria's reign, unofficially observed
-
-        } else if ($this->year >= 1901 && $this->year < 1910) {  // Queen Victoria's reign, unofficially observed
-
-        } else if ($this->year >= 1910 && $this->year < 1936) {  // Queen Victoria's reign, unofficially observed
-
-        } else if ($this->year = 1936) {
-
-        } else if ($this->year = 1943) {
-
-        }
+        ], new DateTime("previous monday may 25 $this->year", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_BANK));
 
 
 
@@ -180,6 +141,12 @@ class Canada extends AbstractProvider
          * Observed holidays
          */
         $this->addHoliday($this->easter($this->year, $this->timezone, $this->locale, Holiday::TYPE_OBSERVANCE));
+
+        $this->addHoliday(new Holiday('Remembrance Day', [
+            'fr_CA' => 'Jour du Souvenir',
+            'en_CA' => 'Remembrance Day',
+            'en_US' => 'Remembrance Day'
+            ], new DateTime("$this->year-11-11", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_OBSERVANCE));
 
 
     }
