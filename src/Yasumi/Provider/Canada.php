@@ -53,6 +53,7 @@ class Canada extends AbstractProvider
         $this->addHoliday($this->goodFriday($this->year, $this->timezone, $this->locale));
         $this->addHoliday($this->christmasDay($this->year, $this->timezone, $this->locale));
 
+
         /**
          * Canada Day.
          *
@@ -66,12 +67,12 @@ class Canada extends AbstractProvider
          * https://en.wikipedia.org/wiki/Canada_Day
          */
 
-
         $this->addHoliday(new Holiday('canadaDay', [
             'fr_CA' => 'Fête du Canada',
             'en_CA' => 'Canada Day',
             'en_US' => 'Canada Day'
         ], new DateTime("$this->year-7-1", new DateTimeZone($this->timezone)), $this->locale));
+
 
         /**
          * Labour Day.
@@ -80,6 +81,7 @@ class Canada extends AbstractProvider
          * It is an annual holiday to celebrate the achievements of workers.
          * https://en.wikipedia.org/wiki/Labour_Day#Canada
          */
+
         $this->addHoliday(new Holiday('labourDay', [
             'fr_CA' => 'Fête du travail',
             'en_CA' => 'Labour Day',
@@ -94,6 +96,21 @@ class Canada extends AbstractProvider
 
         $this->addHoliday($this->easterMonday($this->year, $this->timezone, $this->locale, Holiday::TYPE_BANK));
         $this->addHoliday($this->secondChristmasDay($this->year, $this->timezone, $this->locale, Holiday::TYPE_BANK));
+
+
+        /**
+         * Remembrance Day.
+         *
+         * Remembrance Day is a day commemorating the end of World War 1. It serves to commemorate fallen soldiers.
+         * https://en.wikipedia.org/wiki/Remembrance_Day#Canada
+         */
+
+        $this->addHoliday(new Holiday('Remembrance Day', [
+            'fr_CA' => 'Jour du Souvenir',
+            'en_CA' => 'Remembrance Day',
+            'en_US' => 'Remembrance Day'
+        ], new DateTime("$this->year-11-11", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_BANK));
+
 
         /**
          * Thanksgiving.
@@ -111,6 +128,7 @@ class Canada extends AbstractProvider
             'en_US' => 'Thanksgiving'
         ], new DateTime("second monday of october $this->year", $this->timezone)), $this->locale, Holiday::TYPE_BANK);
 
+
         /**
          * Victoria Day.
          *
@@ -125,29 +143,29 @@ class Canada extends AbstractProvider
             'fr_CA' => 'Fête du souverain',
             'en_CA' => 'Sovereign\'s Birthday',
             'en_US' => 'Sovereign\'s Birthday'
-        ], new DateTime("previous monday may 25 2018", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_OBSERVANCE));
-
-
+        ], new DateTime("previous monday may 25 $this->year", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_OBSERVANCE));
 
         $this->addHoliday(new Holiday('victoriaDay', [
-            'fr_CA' => 'Jour de Victoria',
+            'fr_CA' => 'La Fête de Victoria',
             'en_CA' => 'Victoria Day',
             'en_US' => 'Victoria Day'
         ], new DateTime("previous monday may 25 $this->year", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_BANK));
 
 
+        /**
+         * August Civic Holiday.
+         * https://en.wikipedia.org/wiki/Civic_Holiday
+         */
+
+        $this->addHoliday(new Holiday('augustCivicHoliday', [
+            'fr_CA' => 'Premier lundi d\'août',
+            'en_CA' => 'Civic Holiday',
+            'en_US' => 'Civic Holiday'
+        ], new DateTime("first monday of august $this->year", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_BANK));
 
         /*
          * Observed holidays
          */
         $this->addHoliday($this->easter($this->year, $this->timezone, $this->locale, Holiday::TYPE_OBSERVANCE));
-
-        $this->addHoliday(new Holiday('Remembrance Day', [
-            'fr_CA' => 'Jour du Souvenir',
-            'en_CA' => 'Remembrance Day',
-            'en_US' => 'Remembrance Day'
-            ], new DateTime("$this->year-11-11", new DateTimeZone($this->timezone)), $this->locale, Holiday::TYPE_OBSERVANCE));
-
-
     }
 }
