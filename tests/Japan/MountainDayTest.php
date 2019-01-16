@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Japan;
@@ -25,15 +25,17 @@ class MountainDayTest extends JapanBaseTestCase implements YasumiTestCaseInterfa
     /**
      * The name of the holiday
      */
-    const HOLIDAY = 'mountainDay';
+    public const HOLIDAY = 'mountainDay';
 
     /**
      * The year in which the holiday was first established
      */
-    const ESTABLISHMENT_YEAR = 2016;
+    public const ESTABLISHMENT_YEAR = 2016;
 
     /**
      * Tests Mountain Day in 2020. Mountain Day in 2020 is August 10th for the Olympic Games.
+     * @throws \Exception
+     * @throws \ReflectionException
      */
     public function testMountainDayIn2020()
     {
@@ -48,6 +50,8 @@ class MountainDayTest extends JapanBaseTestCase implements YasumiTestCaseInterfa
 
     /**
      * Tests Mountain Day after 2016. Mountain Day was established in 2014 and is held from 2016 on August 11th.
+     * @throws \Exception
+     * @throws \ReflectionException
      */
     public function testMountainDayOnAfter2016()
     {
@@ -62,6 +66,8 @@ class MountainDayTest extends JapanBaseTestCase implements YasumiTestCaseInterfa
 
     /**
      * Tests Mountain Day after 2016 substituted next working day (when Mountain Day falls on a Sunday)
+     * @throws \Exception
+     * @throws \ReflectionException
      */
     public function testMountainDayOnAfter2016SubstitutedNextWorkingDay()
     {
@@ -76,6 +82,7 @@ class MountainDayTest extends JapanBaseTestCase implements YasumiTestCaseInterfa
 
     /**
      * Tests Mountain Day before 2016. Mountain Day was established in 2014 and is held from 2016 on August 11th.
+     * @throws \ReflectionException
      */
     public function testMountainDayBefore2016()
     {
@@ -88,8 +95,9 @@ class MountainDayTest extends JapanBaseTestCase implements YasumiTestCaseInterfa
 
     /**
      * Tests the translated name of the holiday defined in this test.
+     * @throws \ReflectionException
      */
-    public function testTranslation()
+    public function testTranslation(): void
     {
         $this->assertTranslatedHolidayName(
             self::REGION,
@@ -101,8 +109,9 @@ class MountainDayTest extends JapanBaseTestCase implements YasumiTestCaseInterfa
 
     /**
      * Tests type of the holiday defined in this test.
+     * @throws \ReflectionException
      */
-    public function testHolidayType()
+    public function testHolidayType(): void
     {
         $this->assertHolidayType(
             self::REGION,

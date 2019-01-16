@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Australia\NT;
@@ -19,8 +19,6 @@ use Yasumi\Holiday;
  */
 class NTTest extends NTBaseTestCase
 {
-    public $region = 'Australia\NT';
-
     /**
      * @var int year random year number used for all tests in this Test Case
      */
@@ -28,8 +26,9 @@ class NTTest extends NTBaseTestCase
 
     /**
      * Tests if all official holidays in NT (Australia) are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testOfficialHolidays()
+    public function testOfficialHolidays(): void
     {
         $this->assertDefinedHolidays([
             'newYearsDay',

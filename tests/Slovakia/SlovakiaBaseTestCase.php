@@ -3,12 +3,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 
@@ -31,15 +31,15 @@ abstract class SlovakiaBaseTestCase extends TestCase
     /**
      * Name of the region (e.g. country / state) to be tested
      */
-    const REGION = 'Slovakia';
+    public const REGION = 'Slovakia';
 
     /**
      * Timezone in which this provider has holidays defined
      */
-    const TIMEZONE = 'Europe/Bratislava';
+    public const TIMEZONE = 'Europe/Bratislava';
 
     /**
      * Locale that is considered common for this provider
      */
-    const LOCALE = 'sk_SK';
+    public const LOCALE = 'sk_SK';
 }

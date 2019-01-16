@@ -2,13 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Australia;
@@ -26,8 +25,8 @@ class BoxingDayTest extends AustraliaBaseTestCase implements YasumiTestCaseInter
     /**
      * The name of the holiday
      */
-    const HOLIDAY = 'secondChristmasDay';
-    const HOLIDAY2 = 'secondChristmasHoliday';
+    public const HOLIDAY = 'secondChristmasDay';
+    public const HOLIDAY2 = 'secondChristmasHoliday';
 
     /**
      * Tests Boxing Day
@@ -37,6 +36,9 @@ class BoxingDayTest extends AustraliaBaseTestCase implements YasumiTestCaseInter
      * @param int    $year          the year for which the holiday defined in this test needs to be tested
      * @param string $expected      the expected date
      * @param string $expectedExtra the expected date for the additional holiday, or null if no additional holiday
+     *
+     * @throws \ReflectionException
+     * @throws \Exception
      */
     public function testHoliday($year, $expected, $expectedExtra)
     {
@@ -88,8 +90,10 @@ class BoxingDayTest extends AustraliaBaseTestCase implements YasumiTestCaseInter
 
     /**
      * Tests the translated name of the holiday defined in this test.
+     *
+     * @throws \ReflectionException
      */
-    public function testTranslation()
+    public function testTranslation(): void
     {
         $this->assertTranslatedHolidayName(
             $this->region,
@@ -107,8 +111,10 @@ class BoxingDayTest extends AustraliaBaseTestCase implements YasumiTestCaseInter
 
     /**
      * Tests type of the holiday defined in this test.
+     *
+     * @throws \ReflectionException
      */
-    public function testHolidayType()
+    public function testHolidayType(): void
     {
         $this->assertHolidayType($this->region, self::HOLIDAY, $this->generateRandomYear(), Holiday::TYPE_OFFICIAL);
         $this->assertHolidayType($this->region, self::HOLIDAY2, 2020, Holiday::TYPE_OFFICIAL);

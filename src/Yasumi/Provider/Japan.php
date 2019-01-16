@@ -3,12 +3,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider;
@@ -29,47 +29,47 @@ class Japan extends AbstractProvider
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'JP';
+    public const ID = 'JP';
 
     /**
      * The gradient parameter of the approximate expression to calculate equinox day.
      */
-    const EQUINOX_GRADIENT = 0.242194;
+    private const EQUINOX_GRADIENT = 0.242194;
 
     /**
      * The initial parameter of the approximate expression to calculate vernal equinox day from 1900 to 1979.
      */
-    const VERNAL_EQUINOX_PARAM_1979 = 20.8357;
+    private const VERNAL_EQUINOX_PARAM_1979 = 20.8357;
 
     /**
      * The initial parameter of the approximate expression to calculate vernal equinox day from 1980 to 2099.
      */
-    const VERNAL_EQUINOX_PARAM_2099 = 20.8431;
+    private const VERNAL_EQUINOX_PARAM_2099 = 20.8431;
 
     /**
      * The initial parameter of the approximate expression to calculate vernal equinox day from 2100 to 2150.
      */
-    const VERNAL_EQUINOX_PARAM_2150 = 21.8510;
+    private const VERNAL_EQUINOX_PARAM_2150 = 21.8510;
 
     /**
      * The initial parameter of the approximate expression to calculate autumnal equinox day from 1851 to 1899.
      */
-    const AUTUMNAL_EQUINOX_PARAM_1899 = 22.2588;
+    private const AUTUMNAL_EQUINOX_PARAM_1899 = 22.2588;
 
     /**
      * The initial parameter of the approximate expression to calculate autumnal equinox day from 1900 to 1979.
      */
-    const AUTUMNAL_EQUINOX_PARAM_1979 = 23.2588;
+    private const AUTUMNAL_EQUINOX_PARAM_1979 = 23.2588;
 
     /**
      * The initial parameter of the approximate expression to calculate autumnal equinox day from 1980 to 2099.
      */
-    const AUTUMNAL_EQUINOX_PARAM_2099 = 23.2488;
+    private const AUTUMNAL_EQUINOX_PARAM_2099 = 23.2488;
 
     /**
      * The initial parameter of the approximate expression to calculate autumnal equinox day from 2100 to 2150.
      */
-    const AUTUMNAL_EQUINOX_PARAM_2150 = 24.2488;
+    private const AUTUMNAL_EQUINOX_PARAM_2150 = 24.2488;
 
     /**
      * Initialize holidays for Japan.
@@ -79,20 +79,42 @@ class Japan extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->timezone = 'Asia/Tokyo';
 
-        /**
-         * New Year's Day. New Year's Day in Japan is established since 1948.
-         */
+        // Add common holidays
         if ($this->year >= 1948) {
             $this->addHoliday($this->newYearsDay($this->year, $this->timezone, $this->locale));
         }
 
-        /**
-         * National Foundation Day. National Foundation Day is held on February 11th and established since 1966.
-         */
+        // Calculate other holidays
+        $this->calculateNationalFoundationDay();
+        $this->calculateShowaDay();
+        $this->calculateConstitutionMemorialDay();
+        $this->calculateChildrensDay();
+        $this->calculateCultureDay();
+        $this->calculateLaborThanksgivingDay();
+        $this->calculateEmporersBirthday();
+        $this->calculateVernalEquinoxDay();
+        $this->calculateComingOfAgeDay();
+        $this->calculateGreeneryDay();
+        $this->calculateMarineDay();
+        $this->calculateMountainDay();
+        $this->calculateRespectForTheAgeDay();
+        $this->calculateHealthAndSportsDay();
+        $this->calculateAutumnalEquinoxDay();
+        $this->calculateSubstituteHolidays();
+        $this->calculateBridgeHolidays();
+    }
+
+    /**
+     * National Foundation Day. National Foundation Day is held on February 11th and established since 1966.
+     *
+     * @throws \Exception
+     */
+    private function calculateNationalFoundationDay(): void
+    {
         if ($this->year >= 1966) {
             $this->addHoliday(new Holiday(
                 'nationalFoundationDay',
@@ -101,10 +123,15 @@ class Japan extends AbstractProvider
                 $this->locale
             ));
         }
+    }
 
-        /**
-         * Showa Day. Showa Day is held on April 29th and established since 2007.
-         */
+    /**
+     * Showa Day. Showa Day is held on April 29th and established since 2007.
+     *
+     * @throws \Exception
+     */
+    private function calculateShowaDay(): void
+    {
         if ($this->year >= 2007) {
             $this->addHoliday(new Holiday(
                 'showaDay',
@@ -113,10 +140,15 @@ class Japan extends AbstractProvider
                 $this->locale
             ));
         }
+    }
 
-        /**
-         * Constitution Memorial Day. Constitution Memorial Day is held on May 3rd and established since 1948.
-         */
+    /**
+     * Constitution Memorial Day. Constitution Memorial Day is held on May 3rd and established since 1948.
+     *
+     * @throws \Exception
+     */
+    private function calculateConstitutionMemorialDay(): void
+    {
         if ($this->year >= 1948) {
             $this->addHoliday(new Holiday(
                 'constitutionMemorialDay',
@@ -125,10 +157,14 @@ class Japan extends AbstractProvider
                 $this->locale
             ));
         }
-
-        /**
-         * Children's Day. Children's Day is held on May 5th and established since 1948.
-         */
+    }
+    /**
+     * Children's Day. Children's Day is held on May 5th and established since 1948.
+     *
+     * @throws \Exception
+     */
+    private function calculateChildrensDay(): void
+    {
         if ($this->year >= 1948) {
             $this->addHoliday(new Holiday(
                 'childrensDay',
@@ -137,10 +173,15 @@ class Japan extends AbstractProvider
                 $this->locale
             ));
         }
+    }
 
-        /**
-         * Culture Day. Culture Day is held on November 11th and established since 1948.
-         */
+    /**
+     * Culture Day. Culture Day is held on November 11th and established since 1948.
+     *
+     * @throws \Exception
+     */
+    private function calculateCultureDay(): void
+    {
         if ($this->year >= 1948) {
             $this->addHoliday(new Holiday(
                 'cultureDay',
@@ -149,10 +190,15 @@ class Japan extends AbstractProvider
                 $this->locale
             ));
         }
+    }
 
-        /**
-         * Labor Thanksgiving Day. Labor Thanksgiving Day is held on November 23rd and established since 1948.
-         */
+    /**
+     * Labor Thanksgiving Day. Labor Thanksgiving Day is held on November 23rd and established since 1948.
+     *
+     * @throws \Exception
+     */
+    private function calculateLaborThanksgivingDay(): void
+    {
         if ($this->year >= 1948) {
             $this->addHoliday(new Holiday(
                 'laborThanksgivingDay',
@@ -161,11 +207,16 @@ class Japan extends AbstractProvider
                 $this->locale
             ));
         }
+    }
 
-        /**
-         * Emperors Birthday. The Emperors Birthday is on December 23rd and celebrated as such since 1989.
-         * Prior to the death of Emperor Hirohito in 1989, this holiday was celebrated on April 29. See also "Shōwa Day".
-         */
+    /**
+     * Emperors Birthday. The Emperors Birthday is on December 23rd and celebrated as such since 1989.
+     * Prior to the death of Emperor Hirohito in 1989, this holiday was celebrated on April 29. See also "Shōwa Day".
+     *
+     * @throws \Exception
+     */
+    private function calculateEmporersBirthday(): void
+    {
         if ($this->year >= 1989) {
             $this->addHoliday(new Holiday(
                 'emperorsBirthday',
@@ -174,17 +225,6 @@ class Japan extends AbstractProvider
                 $this->locale
             ));
         }
-
-        $this->calculateVernalEquinoxDay();
-        $this->calculateComingOfAgeDay();
-        $this->calculateGreeneryDay();
-        $this->calculateMarineDay();
-        $this->caluclateMountainDay();
-        $this->calculateRespectForTheAgeDay();
-        $this->calculateHealthAndSportsDay();
-        $this->calculateAutumnalEquinoxDay();
-        $this->calculateSubstituteHolidays();
-        $this->calculateBridgeHolidays();
     }
 
     /**
@@ -201,7 +241,7 @@ class Japan extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    private function calculateVernalEquinoxDay()
+    private function calculateVernalEquinoxDay(): void
     {
         $day = null;
         if ($this->year < 1948 || $this->year > 2150) {
@@ -236,7 +276,7 @@ class Japan extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    private function calculateComingOfAgeDay()
+    private function calculateComingOfAgeDay(): void
     {
         $date = null;
         if ($this->year >= 2000) {
@@ -266,7 +306,7 @@ class Japan extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    private function calculateGreeneryDay()
+    private function calculateGreeneryDay(): void
     {
         $date = null;
         if ($this->year >= 2007) {
@@ -298,10 +338,10 @@ class Japan extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    private function calculateMarineDay()
+    private function calculateMarineDay(): void
     {
         $date = null;
-        if ($this->year == 2020) {
+        if ($this->year === 2020) {
             $date = new DateTime("$this->year-7-23", new DateTimeZone($this->timezone));
         } elseif ($this->year >= 2003) {
             $date = new DateTime("third monday of july $this->year", new DateTimeZone($this->timezone));
@@ -329,10 +369,10 @@ class Japan extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    private function caluclateMountainDay()
+    private function calculateMountainDay(): void
     {
         $date = null;
-        if ($this->year == 2020) {
+        if ($this->year === 2020) {
             $date = new DateTime("$this->year-8-10", new DateTimeZone($this->timezone));
         } elseif ($this->year >= 2016) {
             $date = new DateTime("$this->year-8-11", new DateTimeZone($this->timezone));
@@ -360,7 +400,7 @@ class Japan extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    private function calculateRespectForTheAgeDay()
+    private function calculateRespectForTheAgeDay(): void
     {
         $date = null;
         if ($this->year >= 2003) {
@@ -392,10 +432,10 @@ class Japan extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    private function calculateHealthAndSportsDay()
+    private function calculateHealthAndSportsDay(): void
     {
         $date = null;
-        if ($this->year == 2020) {
+        if ($this->year === 2020) {
             $date = new DateTime("$this->year-7-24", new DateTimeZone($this->timezone));
         } elseif ($this->year >= 2000) {
             $date = new DateTime("second monday of october $this->year", new DateTimeZone($this->timezone));
@@ -427,7 +467,7 @@ class Japan extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    private function calculateAutumnalEquinoxDay()
+    private function calculateAutumnalEquinoxDay(): void
     {
         $day = null;
         if ($this->year < 1948 || $this->year > 2150) {
@@ -461,7 +501,7 @@ class Japan extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    private function calculateSubstituteHolidays()
+    private function calculateSubstituteHolidays(): void
     {
         // Get initial list of holiday dates
         $dates = $this->getHolidayDates();
@@ -508,7 +548,7 @@ class Japan extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    private function calculateBridgeHolidays()
+    private function calculateBridgeHolidays(): void
     {
         // Get initial list of holidays and iterator
         $datesIterator = $this->getIterator();

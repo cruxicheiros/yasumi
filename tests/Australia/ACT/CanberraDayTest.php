@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Australia\ACT;
@@ -25,12 +25,12 @@ class CanberraDayTest extends ACTBaseTestCase implements YasumiTestCaseInterface
     /**
      * The name of the holiday
      */
-    const HOLIDAY = 'canberraDay';
+    public const HOLIDAY = 'canberraDay';
 
     /**
      * The year in which the holiday was first established
      */
-    const ESTABLISHMENT_YEAR = 1913;
+    public const ESTABLISHMENT_YEAR = 1913;
 
     /**
      * Tests Canberra Day
@@ -39,6 +39,9 @@ class CanberraDayTest extends ACTBaseTestCase implements YasumiTestCaseInterface
      *
      * @param int    $year     the year for which the holiday defined in this test needs to be tested
      * @param string $expected the expected date
+     *
+     * @throws \ReflectionException
+     * @throws \Exception
      */
     public function testHoliday($year, $expected)
     {
@@ -76,8 +79,9 @@ class CanberraDayTest extends ACTBaseTestCase implements YasumiTestCaseInterface
 
     /**
      * Tests the translated name of the holiday defined in this test.
+     * @throws \ReflectionException
      */
-    public function testTranslation()
+    public function testTranslation(): void
     {
         $this->assertTranslatedHolidayName(
             $this->region,
@@ -89,8 +93,9 @@ class CanberraDayTest extends ACTBaseTestCase implements YasumiTestCaseInterface
 
     /**
      * Tests type of the holiday defined in this test.
+     * @throws \ReflectionException
      */
-    public function testHolidayType()
+    public function testHolidayType(): void
     {
         $this->assertHolidayType(
             $this->region,

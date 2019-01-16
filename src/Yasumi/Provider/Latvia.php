@@ -3,12 +3,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider;
@@ -24,15 +24,15 @@ class Latvia extends AbstractProvider
 {
     use CommonHolidays, ChristianHolidays;
 
-    const RESTORATION_OF_INDEPENDENCE_YEAR = 1990;
+    public const RESTORATION_OF_INDEPENDENCE_YEAR = 1990;
 
-    const PROCLAMATION_OF_INDEPENDENCE_YEAR = 1918;
+    public const PROCLAMATION_OF_INDEPENDENCE_YEAR = 1918;
 
     /**
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'LV';
+    public const ID = 'LV';
 
     /**
      * Initialize holidays for Latvia.
@@ -40,7 +40,7 @@ class Latvia extends AbstractProvider
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->timezone = 'Europe/Riga';
 
@@ -67,7 +67,7 @@ class Latvia extends AbstractProvider
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    private function addRestorationOfIndependenceDay()
+    private function addRestorationOfIndependenceDay(): void
     {
         if ($this->year >= self::RESTORATION_OF_INDEPENDENCE_YEAR) {
             $date = new \DateTime("{$this->year}-05-04", new \DateTimeZone($this->timezone));
@@ -87,7 +87,7 @@ class Latvia extends AbstractProvider
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    private function addMidsummerEveDay()
+    private function addMidsummerEveDay(): void
     {
         $this->addHoliday(new Holiday('midsummerEveDay', [
             'en_US' => 'Midsummer Eve',
@@ -102,7 +102,7 @@ class Latvia extends AbstractProvider
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    private function addProclamationDay()
+    private function addProclamationDay(): void
     {
         if ($this->year >= self::PROCLAMATION_OF_INDEPENDENCE_YEAR) {
             $date = new \DateTime("{$this->year}-11-18", new \DateTimeZone($this->timezone));

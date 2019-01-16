@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider;
@@ -29,7 +29,7 @@ class UnitedKingdom extends AbstractProvider
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'GB';
+    public const ID = 'GB';
 
     /**
      * Initialize holidays for the United Kingdom.
@@ -39,7 +39,7 @@ class UnitedKingdom extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->timezone = 'Europe/London';
 
@@ -72,7 +72,7 @@ class UnitedKingdom extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateNewYearsDay()
+    public function calculateNewYearsDay(): void
     {
         // Before 1871 it was not an observed or statutory holiday
         if ($this->year < 1871) {
@@ -111,7 +111,7 @@ class UnitedKingdom extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    private function calculateMayDayBankHoliday()
+    private function calculateMayDayBankHoliday(): void
     {
         // From 1978, by Royal Proclamation annually
         if ($this->year < 1978) {
@@ -143,7 +143,7 @@ class UnitedKingdom extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    private function calculateSpringBankHoliday()
+    private function calculateSpringBankHoliday(): void
     {
         // Statutory bank holiday from 1971, following a trial period from 1965 to 1970.
         if ($this->year < 1965) {
@@ -175,7 +175,7 @@ class UnitedKingdom extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    private function calculateSummerBankHoliday()
+    private function calculateSummerBankHoliday(): void
     {
         // Statutory bank holiday from 1971, following a trial period from 1965 to 1970.
         if ($this->year < 1965) {
@@ -213,7 +213,7 @@ class UnitedKingdom extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateChristmasHolidays()
+    public function calculateChristmasHolidays(): void
     {
         $christmasDay = new DateTime("$this->year-12-25", new DateTimeZone($this->timezone));
         $boxingDay    = new DateTime("$this->year-12-26", new DateTimeZone($this->timezone));

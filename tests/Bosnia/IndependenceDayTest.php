@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Bosnia;
@@ -25,15 +25,17 @@ class IndependenceDayTest extends BosniaBaseTestCase implements YasumiTestCaseIn
     /**
      * The name of the holiday
      */
-    const HOLIDAY = 'independenceDay';
+    public const HOLIDAY = 'independenceDay';
 
     /**
      * The year in which the holiday was first established
      */
-    const ESTABLISHMENT_YEAR = 1992;
+    public const ESTABLISHMENT_YEAR = 1992;
 
     /**
      * Tests Independence Day on or after 1992.
+     * @throws \Exception
+     * @throws \ReflectionException
      */
     public function testIndependenceDayOnAfter1992()
     {
@@ -48,6 +50,7 @@ class IndependenceDayTest extends BosniaBaseTestCase implements YasumiTestCaseIn
 
     /**
      * Tests Independence Day before 1992.
+     * @throws \ReflectionException
      */
     public function testIndependenceDayBefore1992()
     {
@@ -60,8 +63,9 @@ class IndependenceDayTest extends BosniaBaseTestCase implements YasumiTestCaseIn
 
     /**
      * Tests translated name of Independence Day.
+     * @throws \ReflectionException
      */
-    public function testTranslation()
+    public function testTranslation(): void
     {
         $this->assertTranslatedHolidayName(
             self::REGION,
@@ -73,8 +77,9 @@ class IndependenceDayTest extends BosniaBaseTestCase implements YasumiTestCaseIn
 
     /**
      * Tests type of the holiday defined in this test.
+     * @throws \ReflectionException
      */
-    public function testHolidayType()
+    public function testHolidayType(): void
     {
         $this->assertHolidayType(
             self::REGION,

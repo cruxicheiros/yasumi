@@ -2,13 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider;
@@ -29,7 +28,7 @@ class Australia extends AbstractProvider
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'AU';
+    public const ID = 'AU';
 
     public $timezone = 'Australia/Melbourne';
 
@@ -40,7 +39,7 @@ class Australia extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         // Official Holidays
         $this->calculateNewYearHolidays();
@@ -71,7 +70,7 @@ class Australia extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateAustraliaDay()
+    public function calculateAustraliaDay(): void
     {
         $date = new DateTime("$this->year-01-26", new DateTimeZone($this->timezone));
 
@@ -100,7 +99,7 @@ class Australia extends AbstractProvider
         $moveFromSaturday = true,
         $moveFromSunday = true,
         $type = Holiday::TYPE_OFFICIAL
-    ) {
+    ): void {
         $day = (int)$date->format('w');
         if (($day === 0 && $moveFromSunday) || ($day === 6 && $moveFromSaturday)) {
             $date = $date->add($day === 0 ? new DateInterval('P1D') : new DateInterval('P2D'));
@@ -123,7 +122,7 @@ class Australia extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateNewYearHolidays()
+    public function calculateNewYearHolidays(): void
     {
         $newyearsday = new DateTime("$this->year-01-01", new DateTimeZone($this->timezone));
         $this->calculateHoliday('newYearsDay', ['en_AU' => 'New Year\'s Day'], $newyearsday, false, false);
@@ -155,7 +154,7 @@ class Australia extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateAnzacDay()
+    public function calculateAnzacDay(): void
     {
         if ($this->year < 1921) {
             return;
@@ -164,12 +163,16 @@ class Australia extends AbstractProvider
         $date = new DateTime("$this->year-04-25", new DateTimeZone($this->timezone));
         $this->calculateHoliday('anzacDay', ['en_AU' => 'ANZAC Day'], $date, false, false);
         $easter = $this->calculateEaster($this->year, $this->timezone);
+
         $easterMonday = $this->calculateEaster($this->year, $this->timezone);
         $easterMonday->add(new DateInterval('P1D'));
-        if (($date->format('Y-m-d') === $easter->format('Y-m-d')) || ($date->format('Y-m-d') === $easterMonday->format('Y-m-d'))) {
+
+        $fDate = $date->format('Y-m-d');
+        if ($fDate === $easter->format('Y-m-d') || $fDate === $easterMonday->format('Y-m-d')) {
             $easterMonday->add(new DateInterval('P1D'));
             $this->calculateHoliday('easterTuesday', ['en_AU' => 'Easter Tuesday'], $easterMonday, false, false);
         }
+        unset($fDate);
     }
 
     /**
@@ -184,7 +187,7 @@ class Australia extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateChristmasDay()
+    public function calculateChristmasDay(): void
     {
         $christmasDay = new DateTime("$this->year-12-25", new DateTimeZone($this->timezone));
         $boxingDay    = new DateTime("$this->year-12-26", new DateTimeZone($this->timezone));

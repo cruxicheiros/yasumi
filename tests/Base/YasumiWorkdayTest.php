@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests;
@@ -17,7 +17,7 @@ use Yasumi\Yasumi;
 
 class YasumiWorkdayTest extends TestCase
 {
-    const FORMAT_DATE = 'Y-m-d';
+    public const FORMAT_DATE = 'Y-m-d';
 
     /**
      * Tests that the nextWorkingDay function returns an object that implements the DateTimeInterface (e.g. DateTime)
@@ -25,7 +25,7 @@ class YasumiWorkdayTest extends TestCase
      * @throws \Exception
      * @throws \ReflectionException
      */
-    public function testNextWorkingDay()
+    public function testNextWorkingDay(): void
     {
         // Includes a weekend and a holiday
         $provider     = 'USA';
@@ -54,7 +54,7 @@ class YasumiWorkdayTest extends TestCase
      * @throws \Exception
      * @throws \ReflectionException
      */
-    public function testPreviousWorkingDay()
+    public function testPreviousWorkingDay(): void
     {
         // Includes a weekend and a holiday
         $provider     = 'USA';
@@ -84,7 +84,7 @@ class YasumiWorkdayTest extends TestCase
      * @throws \Exception
      * @throws \ReflectionException
      */
-    public function testYearBoundary()
+    public function testYearBoundary(): void
     {
         /**
          * Use Case (USA):

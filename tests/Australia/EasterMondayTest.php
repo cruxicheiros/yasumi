@@ -2,13 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Australia;
@@ -27,8 +26,8 @@ class EasterMondayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
     /**
      * The name of the holiday
      */
-    const HOLIDAY = 'easterMonday';
-    const HOLIDAY2 = 'easterTuesday';
+    public const HOLIDAY = 'easterMonday';
+    public const HOLIDAY2 = 'easterTuesday';
 
     /**
      * Tests Easter Monday
@@ -37,6 +36,9 @@ class EasterMondayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
      *
      * @param int    $year     the year for which the holiday defined in this test needs to be tested
      * @param string $expected the expected date
+     *
+     * @throws \ReflectionException
+     * @throws \Exception
      */
     public function testHoliday($year, $expected)
     {
@@ -55,6 +57,9 @@ class EasterMondayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
      *
      * @param int    $year     the year for which the holiday defined in this test needs to be tested
      * @param string $expected the expected date
+     *
+     * @throws \ReflectionException
+     * @throws \Exception
      */
     public function testHoliday2($year, $expected)
     {
@@ -70,6 +75,7 @@ class EasterMondayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
      * Returns a list of test dates
      *
      * @return array list of test dates for the holiday defined in this test
+     * @throws \Exception
      */
     public function HolidayDataProvider(): array
     {
@@ -93,8 +99,6 @@ class EasterMondayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
      */
     public function HolidayDataProvider2(): array
     {
-        $data = [];
-
         $data = [
             [2011, '2011-04-26'],
             [2038, '2038-04-27'],
@@ -107,8 +111,10 @@ class EasterMondayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
 
     /**
      * Tests the translated name of the holiday defined in this test.
+     *
+     * @throws \ReflectionException
      */
-    public function testTranslation()
+    public function testTranslation(): void
     {
         $this->assertTranslatedHolidayName(
             $this->region,
@@ -126,8 +132,10 @@ class EasterMondayTest extends AustraliaBaseTestCase implements YasumiTestCaseIn
 
     /**
      * Tests type of the holiday defined in this test.
+     *
+     * @throws \ReflectionException
      */
-    public function testHolidayType()
+    public function testHolidayType(): void
     {
         $this->assertHolidayType($this->region, self::HOLIDAY, $this->generateRandomYear(), Holiday::TYPE_OFFICIAL);
         $this->assertHolidayType($this->region, self::HOLIDAY2, 2011, Holiday::TYPE_OFFICIAL);

@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Finland;
@@ -25,15 +25,15 @@ abstract class FinlandBaseTestCase extends TestCase
     /**
      * Name of the region (e.g. country / state) to be tested
      */
-    const REGION = 'Finland';
+    public const REGION = 'Finland';
 
     /**
      * Timezone in which this provider has holidays defined
      */
-    const TIMEZONE = 'Europe/Helsinki';
+    public const TIMEZONE = 'Europe/Helsinki';
 
     /**
      * Locale that is considered common for this provider
      */
-    const LOCALE = 'fi_FI';
+    public const LOCALE = 'fi_FI';
 }

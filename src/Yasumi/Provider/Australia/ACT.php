@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Australia;
@@ -28,7 +28,7 @@ class ACT extends Australia
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'AU-ACT';
+    public const ID = 'AU-ACT';
 
     public $timezone = 'Australia/ACT';
 
@@ -39,7 +39,7 @@ class ACT extends Australia
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -56,7 +56,7 @@ class ACT extends Australia
      *
      * @throws \Exception
      */
-    public function calculateCanberraDay()
+    public function calculateCanberraDay(): void
     {
         if ($this->year < 2007) {
             $date = new DateTime("third monday of march $this->year", new DateTimeZone($this->timezone));
@@ -71,7 +71,7 @@ class ACT extends Australia
      *
      * @throws \Exception
      */
-    public function calculateReconciliationDay()
+    public function calculateReconciliationDay(): void
     {
         if ($this->year < 2018) {
             return;
@@ -90,7 +90,7 @@ class ACT extends Australia
      *
      * @throws \Exception
      */
-    public function calculateLabourDay()
+    public function calculateLabourDay(): void
     {
         $date = new DateTime("first monday of october $this->year", new DateTimeZone($this->timezone));
 
@@ -176,7 +176,7 @@ class ACT extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function calculateQueensBirthday()
+    public function calculateQueensBirthday(): void
     {
         $this->calculateHoliday(
             'queensBirthday',

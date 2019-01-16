@@ -2,20 +2,18 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Clark Seanor <clarkseanor@gmail.com>
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Base;
 
 use DateTime;
 use DateTimeZone;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Yasumi\tests\YasumiBase;
 use Yasumi\Yasumi;
@@ -31,8 +29,11 @@ class HolidayOnFilterTest extends TestCase
 
     /**
      * Tests the basic usage of the OnFilter.
+     *
+     * @throws \ReflectionException
+     * @throws \Exception
      */
-    public function testHolidaysOnDate()
+    public function testHolidaysOnDate(): void
     {
         $timezone = 'Europe/Amsterdam';
         $holidays = Yasumi::create('Netherlands', 2016);
@@ -52,7 +53,11 @@ class HolidayOnFilterTest extends TestCase
         }
     }
 
-    public function testHolidaysNotOnDate()
+    /**
+     * @throws \ReflectionException
+     * @throws \Exception
+     */
+    public function testHolidaysNotOnDate(): void
     {
         $timezone = 'Europe/Amsterdam';
         $holidays = Yasumi::create('Netherlands', 2016);
@@ -72,7 +77,11 @@ class HolidayOnFilterTest extends TestCase
         }
     }
 
-    public function testCorrectNumberOfHolidaysOnDate()
+    /**
+     * @throws \ReflectionException
+     * @throws \Exception
+     */
+    public function testCorrectNumberOfHolidaysOnDate(): void
     {
         $timezone = 'Europe/Amsterdam';
         $holidays = Yasumi::create('Netherlands', 2016);

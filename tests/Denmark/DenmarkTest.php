@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Denmark;
@@ -26,8 +26,9 @@ class DenmarkTest extends DenmarkBaseTestCase
 
     /**
      * Tests if all official holidays in Denmark are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testOfficialHolidays()
+    public function testOfficialHolidays(): void
     {
         $this->assertDefinedHolidays([
             'newYearsDay',
@@ -46,8 +47,9 @@ class DenmarkTest extends DenmarkBaseTestCase
 
     /**
      * Tests if all observed holidays in Denmark are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testObservedHolidays()
+    public function testObservedHolidays(): void
     {
         $this->assertDefinedHolidays([
             'internationalWorkersDay',
@@ -59,8 +61,9 @@ class DenmarkTest extends DenmarkBaseTestCase
 
     /**
      * Tests if all seasonal holidays in Denmark are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testSeasonalHolidays()
+    public function testSeasonalHolidays(): void
     {
         $year = $this->generateRandomYear(1980, 2037);
         $this->assertDefinedHolidays(['summerTime', 'winterTime'], self::REGION, $year, Holiday::TYPE_SEASON);
@@ -68,16 +71,18 @@ class DenmarkTest extends DenmarkBaseTestCase
 
     /**
      * Tests if all bank holidays in Denmark are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testBankHolidays()
+    public function testBankHolidays(): void
     {
         $this->assertDefinedHolidays([], self::REGION, $this->year, Holiday::TYPE_BANK);
     }
 
     /**
      * Tests if all other holidays in Denmark are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testOtherHolidays()
+    public function testOtherHolidays(): void
     {
         $this->assertDefinedHolidays([], self::REGION, $this->year, Holiday::TYPE_OTHER);
     }

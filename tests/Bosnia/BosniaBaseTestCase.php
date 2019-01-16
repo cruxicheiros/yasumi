@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Bosnia;
@@ -27,15 +27,15 @@ abstract class BosniaBaseTestCase extends TestCase
     /**
      * Country (name) to be tested
      */
-    const REGION = 'Bosnia';
+    public const REGION = 'Bosnia';
 
     /**
      * Timezone in which this provider has holidays defined
      */
-    const TIMEZONE = 'Europe/Sarajevo';
+    public const TIMEZONE = 'Europe/Sarajevo';
 
     /**
      * Locale that is considered common for this provider
      */
-    const LOCALE = 'bs_Latn_BA';
+    public const LOCALE = 'bs_Latn_BA';
 }

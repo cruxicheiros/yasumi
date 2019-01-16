@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests;
@@ -46,7 +46,7 @@ trait YasumiBase
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \ReflectionException
      */
-    public function assertDefinedHolidays($expectedHolidays, $provider, $year, $type)
+    public function assertDefinedHolidays($expectedHolidays, $provider, $year, $type): void
     {
         $holidays = Yasumi::create($provider, $year);
 
@@ -91,7 +91,7 @@ trait YasumiBase
      * @throws \PHPUnit\Framework\AssertionFailedError
      * @throws \ReflectionException
      */
-    public function assertHoliday($provider, $shortName, $year, $expected)
+    public function assertHoliday($provider, $shortName, $year, $expected): void
     {
         $holidays = Yasumi::create($provider, $year);
         $holiday  = $holidays->getHoliday($shortName);
@@ -119,7 +119,7 @@ trait YasumiBase
      * @throws \PHPUnit\Framework\AssertionFailedError
      * @throws \ReflectionException
      */
-    public function assertNotHoliday($provider, $shortName, $year)
+    public function assertNotHoliday($provider, $shortName, $year): void
     {
         $holidays = Yasumi::create($provider, $year);
         $holiday  = $holidays->getHoliday($shortName);
@@ -144,7 +144,7 @@ trait YasumiBase
      * @throws \PHPUnit\Framework\AssertionFailedError
      * @throws \ReflectionException
      */
-    public function assertTranslatedHolidayName($provider, $shortName, $year, $translations)
+    public function assertTranslatedHolidayName($provider, $shortName, $year, $translations): void
     {
         $holidays = Yasumi::create($provider, $year);
         $holiday  = $holidays->getHoliday($shortName);
@@ -180,7 +180,7 @@ trait YasumiBase
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \ReflectionException
      */
-    public function assertHolidayType($provider, $shortName, $year, $type)
+    public function assertHolidayType($provider, $shortName, $year, $type): void
     {
         $holidays = Yasumi::create($provider, $year);
         $holiday  = $holidays->getHoliday($shortName);
@@ -208,7 +208,7 @@ trait YasumiBase
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \ReflectionException
      */
-    public function assertDayOfWeek($provider, $shortName, $year, $expectedDayOfWeek)
+    public function assertDayOfWeek($provider, $shortName, $year, $expectedDayOfWeek): void
     {
         $holidays = Yasumi::create($provider, $year);
         $holiday  = $holidays->getHoliday($shortName);
@@ -232,6 +232,7 @@ trait YasumiBase
      * @param int    $range      year range from which dates will be generated (default: 1000)
      *
      * @return array list of random test dates used for assertion of holidays.
+     * @throws \Exception
      */
     public function generateRandomDates($month, $day, $timezone = 'UTC', $iterations = 10, $range = 1000): array
     {
@@ -443,6 +444,7 @@ trait YasumiBase
      * @param int    $range      year range from which dates will be generated (default: 1000)
      *
      * @return array list of random test dates used for assertion of holidays.
+     * @throws \Exception
      */
     public function generateRandomDatesWithHolidayMovedToMonday(
         $month,
@@ -469,6 +471,7 @@ trait YasumiBase
      * @param int      $range      year range from which dates will be generated (default: 1000)
      *
      * @return array list of random test dates used for assertion of holidays with applied callback.
+     * @throws \Exception
      */
     public function generateRandomDatesWithModifier(
         $month,

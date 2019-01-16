@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Australia;
@@ -27,7 +27,7 @@ class WA extends Australia
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'AU-WA';
+    public const ID = 'AU-WA';
 
     public $timezone = 'Australia/West';
 
@@ -38,7 +38,7 @@ class WA extends Australia
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -52,7 +52,7 @@ class WA extends Australia
      *
      * @throws \Exception
      */
-    public function calculateLabourDay()
+    public function calculateLabourDay(): void
     {
         $date = new DateTime("first monday of march $this->year", new DateTimeZone($this->timezone));
 
@@ -67,7 +67,7 @@ class WA extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function calculateWesternAustraliaDay()
+    public function calculateWesternAustraliaDay(): void
     {
         $this->calculateHoliday(
             'westernAustraliaDay',
@@ -93,7 +93,7 @@ class WA extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function calculateQueensBirthday()
+    public function calculateQueensBirthday(): void
     {
         if ($this->year === 2011) {
             $this->calculateHoliday(

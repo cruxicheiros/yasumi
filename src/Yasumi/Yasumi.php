@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi;
@@ -29,7 +29,7 @@ class Yasumi
     /**
      * Default locale.
      */
-    const DEFAULT_LOCALE = 'en_US';
+    public const DEFAULT_LOCALE = 'en_US';
 
     /**
      * @var array list of all defined locales
@@ -220,11 +220,9 @@ class Yasumi
             return $providers;
         }
 
-        $ds = DIRECTORY_SEPARATOR;
-
         $providers     = [];
         $filesIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(
-            __DIR__ . $ds . 'Provider',
+            __DIR__ . DIRECTORY_SEPARATOR . 'Provider',
             FilesystemIterator::SKIP_DOTS
         ), RecursiveIteratorIterator::SELF_FIRST);
 
@@ -237,7 +235,7 @@ class Yasumi
                 continue;
             }
 
-            $quotedDs = \preg_quote($ds, null);
+            $quotedDs = \preg_quote(DIRECTORY_SEPARATOR, '');
             $provider = \preg_replace("#^.+{$quotedDs}Provider{$quotedDs}(.+)\\.php$#", '$1', $file->getPathName());
 
             $class = new ReflectionClass(\sprintf('Yasumi\Provider\%s', \str_replace('/', '\\', $provider)));

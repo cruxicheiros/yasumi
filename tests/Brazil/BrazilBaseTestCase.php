@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Brazil;
@@ -25,15 +25,15 @@ abstract class BrazilBaseTestCase extends TestCase
     /**
      * Country (name) to be tested
      */
-    const REGION = 'Brazil';
+    public const REGION = 'Brazil';
 
     /**
      * Timezone in which this provider has holidays defined
      */
-    const TIMEZONE = 'America/Fortaleza';
+    public const TIMEZONE = 'America/Fortaleza';
 
     /**
      * Locale that is considered common for this provider
      */
-    const LOCALE = 'pt_BR';
+    public const LOCALE = 'pt_BR';
 }

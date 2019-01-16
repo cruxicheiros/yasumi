@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Base;
@@ -24,7 +24,7 @@ use Yasumi\Translations;
  */
 class TranslationsTest extends TestCase
 {
-    const LOCALES = [
+    public const LOCALES = [
         'en_US',
         'nl_NL',
         'pl_PL',
@@ -33,7 +33,7 @@ class TranslationsTest extends TestCase
     /**
      * Tests adding single translation.
      */
-    public function testAddTranslation()
+    public function testAddTranslation(): void
     {
         $translations = new Translations(self::LOCALES);
 
@@ -51,14 +51,14 @@ class TranslationsTest extends TestCase
         $this->assertEquals([$locale => $translation], $translations->getTranslations($shortName));
 
         $this->assertNotNull($translations->getTranslation($shortName, $locale));
-        $this->assertInternalType('string', $translations->getTranslation($shortName, $locale));
+        $this->assertIsString($translations->getTranslation($shortName, $locale));
         $this->assertEquals($translation, $translations->getTranslation($shortName, $locale));
     }
 
     /**
      * Tests adding multiple translations.
      */
-    public function testAddMultipleTranslations()
+    public function testAddMultipleTranslations(): void
     {
         $translations = new Translations(self::LOCALES);
 
@@ -73,7 +73,7 @@ class TranslationsTest extends TestCase
         $this->assertEquals([$firstLocale => $firstTranslation], $translations->getTranslations($firstShortName));
 
         $this->assertNotNull($translations->getTranslation($firstShortName, $firstLocale));
-        $this->assertInternalType('string', $translations->getTranslation($firstShortName, $firstLocale));
+        $this->assertIsString($translations->getTranslation($firstShortName, $firstLocale));
         $this->assertEquals($firstTranslation, $translations->getTranslation($firstShortName, $firstLocale));
 
         $secondLocale      = 'nl_NL';
@@ -87,7 +87,7 @@ class TranslationsTest extends TestCase
         $this->assertEquals([$secondLocale => $secondTranslation], $translations->getTranslations($secondShortName));
 
         $this->assertNotNull($translations->getTranslation($secondShortName, $secondLocale));
-        $this->assertInternalType('string', $translations->getTranslation($secondShortName, $secondLocale));
+        $this->assertIsString($translations->getTranslation($secondShortName, $secondLocale));
         $this->assertEquals($secondTranslation, $translations->getTranslation($secondShortName, $secondLocale));
 
         $thirdLocale      = 'en_US';
@@ -104,7 +104,7 @@ class TranslationsTest extends TestCase
         );
 
         $this->assertNotNull($translations->getTranslation($thirdShortName, $thirdLocale));
-        $this->assertInternalType('string', $translations->getTranslation($thirdShortName, $thirdLocale));
+        $this->assertIsString($translations->getTranslation($thirdShortName, $thirdLocale));
         $this->assertEquals($thirdTranslation, $translations->getTranslation($thirdShortName, $thirdLocale));
     }
 
@@ -113,7 +113,7 @@ class TranslationsTest extends TestCase
      *
      * @expectedException \Yasumi\Exception\UnknownLocaleException
      */
-    public function testAddTranslationUnknownLocaleException()
+    public function testAddTranslationUnknownLocaleException(): void
     {
         $translations = new Translations(self::LOCALES);
 
@@ -127,7 +127,7 @@ class TranslationsTest extends TestCase
     /**
      * Tests that no translation is returned for an unknown holiday.
      */
-    public function testNoTranslationForUnknownHoliday()
+    public function testNoTranslationForUnknownHoliday(): void
     {
         $translations = new Translations(self::LOCALES);
 
@@ -146,7 +146,7 @@ class TranslationsTest extends TestCase
     /**
      * Tests that no translation is returned for not translated locale.
      */
-    public function testNoTranslationForNotTranslatedLocale()
+    public function testNoTranslationForNotTranslatedLocale(): void
     {
         $translations = new Translations(self::LOCALES);
 
@@ -164,7 +164,7 @@ class TranslationsTest extends TestCase
     /**
      * Tests loading one translation file from directory.
      */
-    public function testLoadingTranslationsFromDirectory()
+    public function testLoadingTranslationsFromDirectory(): void
     {
         $shortName    = 'newYearsDay';
         $fileContents = <<<'FILE'
@@ -186,14 +186,14 @@ FILE;
 
         $this->assertNotNull($translations->getTranslations($shortName));
         $this->assertNotEmpty($translations->getTranslations($shortName));
-        $this->assertInternalType('string', $translations->getTranslation($shortName, $locale));
+        $this->assertIsString($translations->getTranslation($shortName, $locale));
         $this->assertEquals($translation, $translations->getTranslation($shortName, $locale));
     }
 
     /**
      * Tests that translation is not loaded from file with invalid extension.
      */
-    public function testNotLoadingTranslationsFromFileWithInvalidExtension()
+    public function testNotLoadingTranslationsFromFileWithInvalidExtension(): void
     {
         $shortName    = 'newYearsDay';
         $fileContents = <<<'FILE'
@@ -219,7 +219,7 @@ FILE;
      *
      * @expectedException \Yasumi\Exception\UnknownLocaleException
      */
-    public function testLoadingTranslationsFromDirectoryWithUnknownLocaleException()
+    public function testLoadingTranslationsFromDirectoryWithUnknownLocaleException(): void
     {
         $shortName    = 'newYearsDay';
         $fileContents = <<<'FILE'
@@ -241,9 +241,9 @@ FILE;
      *
      * @expectedException InvalidArgumentException
      */
-    public function testLoadingTranslationsFromInexistentDirectory()
+    public function testLoadingTranslationsFromInexistentDirectory(): void
     {
-        vfsStream::setup('root');
+        vfsStream::setup();
 
         $translations = new Translations(self::LOCALES);
         $translations->loadTranslations(vfsStream::url('root/lang'));
@@ -252,7 +252,7 @@ FILE;
     /**
      * Tests loading more than one translation file from directory.
      */
-    public function testLoadingMultipleTranslationsFromDirectory()
+    public function testLoadingMultipleTranslationsFromDirectory(): void
     {
         $firstShortName    = 'newYearsDay';
         $firstFileContents = <<<'FILE'
@@ -289,7 +289,7 @@ FILE;
 
         $this->assertNotNull($translations->getTranslations($firstShortName));
         $this->assertNotEmpty($translations->getTranslations($firstShortName));
-        $this->assertInternalType('string', $translations->getTranslation($firstShortName, $locale));
+        $this->assertIsString($translations->getTranslation($firstShortName, $locale));
         $this->assertEquals($translation, $translations->getTranslation($firstShortName, $locale));
 
         $locale      = 'nl_NL';
@@ -297,7 +297,7 @@ FILE;
 
         $this->assertNotNull($translations->getTranslations($secondShortName));
         $this->assertNotEmpty($translations->getTranslations($secondShortName));
-        $this->assertInternalType('string', $translations->getTranslation($secondShortName, $locale));
+        $this->assertIsString($translations->getTranslation($secondShortName, $locale));
         $this->assertEquals($translation, $translations->getTranslation($secondShortName, $locale));
     }
 }

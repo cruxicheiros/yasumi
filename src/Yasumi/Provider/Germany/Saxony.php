@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Germany;
@@ -32,7 +32,7 @@ class Saxony extends Germany
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'DE-SN';
+    public const ID = 'DE-SN';
 
     /**
      * Initialize holidays for Saxony (Germany).
@@ -41,7 +41,7 @@ class Saxony extends Germany
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -59,7 +59,7 @@ class Saxony extends Germany
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    private function calculateReformationDay()
+    private function calculateReformationDay(): void
     {
         if ($this->year < 1517) {
             return;
@@ -85,7 +85,7 @@ class Saxony extends Germany
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateRepentanceAndPrayerDay()
+    public function calculateRepentanceAndPrayerDay(): void
     {
         if ($this->year >= 1995) {
             $this->addHoliday(new Holiday(

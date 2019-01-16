@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Australia;
@@ -28,7 +28,7 @@ class NT extends Australia
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'AU-NT';
+    public const ID = 'AU-NT';
 
     public $timezone = 'Australia/North';
 
@@ -39,7 +39,7 @@ class NT extends Australia
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -54,7 +54,7 @@ class NT extends Australia
      *
      * @throws \Exception
      */
-    public function calculateMayDay()
+    public function calculateMayDay(): void
     {
         $date = new DateTime("first monday of may $this->year", new DateTimeZone($this->timezone));
 
@@ -69,7 +69,7 @@ class NT extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function calculatePicnicDay()
+    public function calculatePicnicDay(): void
     {
         $this->calculateHoliday(
             'picnicDay',
@@ -127,7 +127,7 @@ class NT extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function calculateQueensBirthday()
+    public function calculateQueensBirthday(): void
     {
         $this->calculateHoliday(
             'queensBirthday',

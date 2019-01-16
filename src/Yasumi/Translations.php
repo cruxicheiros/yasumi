@@ -3,12 +3,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi;
@@ -50,7 +50,7 @@ class Translations implements TranslationsInterface
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \InvalidArgumentException
      */
-    public function loadTranslations(string $directoryPath)
+    public function loadTranslations(string $directoryPath): void
     {
         if (! \file_exists($directoryPath)) {
             throw new InvalidArgumentException('Directory with translations not found');
@@ -111,7 +111,7 @@ class Translations implements TranslationsInterface
      *
      * @throws \Yasumi\Exception\UnknownLocaleException
      */
-    public function addTranslation(string $shortName, string $locale, string $translation)
+    public function addTranslation(string $shortName, string $locale, string $translation): void
     {
         $this->isValidLocale($locale); // Validate the given locale
 
@@ -130,7 +130,7 @@ class Translations implements TranslationsInterface
      *
      * @return string|null translated holiday name
      */
-    public function getTranslation(string $shortName, string $locale)
+    public function getTranslation(string $shortName, string $locale): ?string
     {
         if (! \array_key_exists($shortName, $this->translations)) {
             return null;

@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider;
@@ -27,7 +27,7 @@ class Poland extends AbstractProvider
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'PL';
+    public const ID = 'PL';
 
     /**
      * Initialize holidays for Poland.
@@ -37,7 +37,7 @@ class Poland extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->timezone = 'Europe/Warsaw';
 
@@ -77,7 +77,7 @@ class Poland extends AbstractProvider
      * @throws \Exception
      */
 
-    public function calculateIndependenceDay()
+    public function calculateIndependenceDay(): void
     {
         if ($this->year < 1918) {
             return;
@@ -105,7 +105,7 @@ class Poland extends AbstractProvider
      * @throws \Exception
      */
 
-    public function calculateConstitutionDay()
+    public function calculateConstitutionDay(): void
     {
         if ($this->year < 1791) {
             return;

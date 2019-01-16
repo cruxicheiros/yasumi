@@ -2,13 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Australia;
@@ -29,7 +28,7 @@ class Victoria extends Australia
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'AU-VIC';
+    public const ID = 'AU-VIC';
 
     public $timezone = 'Australia/Victoria';
 
@@ -40,7 +39,7 @@ class Victoria extends Australia
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -57,7 +56,7 @@ class Victoria extends Australia
      *
      * @throws \Exception
      */
-    public function calculateLabourDay()
+    public function calculateLabourDay(): void
     {
         $date = new DateTime("second monday of march $this->year", new DateTimeZone($this->timezone));
 
@@ -69,7 +68,7 @@ class Victoria extends Australia
      *
      * @throws \Exception
      */
-    public function calculateMelbourneCupDay()
+    public function calculateMelbourneCupDay(): void
     {
         $date = new DateTime('first Tuesday of November' . " $this->year", new DateTimeZone($this->timezone));
 
@@ -81,7 +80,7 @@ class Victoria extends Australia
      *
      * @throws \Exception
      */
-    public function calculateAFLGrandFinalDay()
+    public function calculateAFLGrandFinalDay(): void
     {
         switch ($this->year) {
             case 2015:
@@ -125,7 +124,7 @@ class Victoria extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function calculateQueensBirthday()
+    public function calculateQueensBirthday(): void
     {
         $this->calculateHoliday(
             'queensBirthday',

@@ -3,12 +3,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider;
@@ -33,7 +33,7 @@ class Ireland extends AbstractProvider
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'IE';
+    public const ID = 'IE';
 
     /**
      * Initialize holidays for Ireland.
@@ -43,7 +43,7 @@ class Ireland extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->timezone = 'Europe/Dublin';
 
@@ -91,7 +91,7 @@ class Ireland extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateNewYearsDay()
+    public function calculateNewYearsDay(): void
     {
         if ($this->year < 1974) {
             return;
@@ -124,7 +124,7 @@ class Ireland extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculatePentecostMonday()
+    public function calculatePentecostMonday(): void
     {
         if ($this->year > 1973) {
             return;
@@ -147,7 +147,7 @@ class Ireland extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    public function calculateChristmasDay()
+    public function calculateChristmasDay(): void
     {
         $holiday = new Holiday(
             'christmasDay',
@@ -184,7 +184,7 @@ class Ireland extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    public function calculateStStephensDay()
+    public function calculateStStephensDay(): void
     {
         $holiday = new Holiday(
             'stStephensDay',
@@ -223,7 +223,7 @@ class Ireland extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    public function calculateStPatricksDay()
+    public function calculateStPatricksDay(): void
     {
         if ($this->year < 1903) {
             return;
@@ -265,7 +265,7 @@ class Ireland extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    public function calculateMayDay()
+    public function calculateMayDay(): void
     {
         if ($this->year < 1994) {
             return;
@@ -293,7 +293,7 @@ class Ireland extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    public function calculateJuneHoliday()
+    public function calculateJuneHoliday(): void
     {
         if ($this->year < 1974) {
             return;
@@ -320,7 +320,7 @@ class Ireland extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    public function calculateOctoberHoliday()
+    public function calculateOctoberHoliday(): void
     {
         if ($this->year < 1977) {
             return;

@@ -3,13 +3,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Clark Seanor <clarkseanor@gmail.com>
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Filters;
@@ -56,7 +55,7 @@ class OnFilter extends FilterIterator implements Countable
     public function accept(): bool
     {
         $holiday = $this->getInnerIterator()->current()->format('Y-m-d');
-        return $holiday == $this->date;
+        return $holiday === $this->date;
     }
 
     /**

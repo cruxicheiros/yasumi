@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Australia\NSW;
@@ -19,8 +19,6 @@ use Yasumi\Holiday;
  */
 class NSWTest extends NSWBaseTestCase
 {
-    public $region = 'Australia\NSW';
-
     /**
      * @var int year random year number used for all tests in this Test Case
      */
@@ -28,8 +26,9 @@ class NSWTest extends NSWBaseTestCase
 
     /**
      * Tests if all official holidays in NSW (Australia) are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testOfficialHolidays()
+    public function testOfficialHolidays(): void
     {
         $this->assertDefinedHolidays([
             'newYearsDay',
@@ -48,8 +47,9 @@ class NSWTest extends NSWBaseTestCase
 
     /**
      * Tests if all bank holidays in NSW (Australia) are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testBankHolidays()
+    public function testBankHolidays(): void
     {
         $this->assertDefinedHolidays([
             'bankHoliday',

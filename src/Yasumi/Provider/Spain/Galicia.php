@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Spain;
@@ -36,7 +36,7 @@ class Galicia extends Spain
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'ES-GA';
+    public const ID = 'ES-GA';
 
     /**
      * Initialize holidays for Galicia (Spain).
@@ -46,7 +46,7 @@ class Galicia extends Spain
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -74,7 +74,7 @@ class Galicia extends Spain
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateGalicianLiteratureDay()
+    public function calculateGalicianLiteratureDay(): void
     {
         if ($this->year >= 1991) {
             $this->addHoliday(new Holiday('galicianLiteratureDay', [
@@ -102,7 +102,7 @@ class Galicia extends Spain
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateStJamesDay()
+    public function calculateStJamesDay(): void
     {
         if ($this->year >= 2000) {
             $this->addHoliday(new Holiday('stJamesDay', [

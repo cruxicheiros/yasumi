@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider;
@@ -32,7 +32,7 @@ class Romania extends AbstractProvider
      * Code to identify this Holiday Provider.
      * Typically this is the ISO3166 code corresponding to the respective country or sub-region.
      */
-    const ID = 'RO';
+    public const ID = 'RO';
 
     /**
      * Initialize holidays for Romania.
@@ -42,7 +42,7 @@ class Romania extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->timezone = 'Europe/Bucharest';
 
@@ -84,7 +84,7 @@ class Romania extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateDayAfterNewYearsDay()
+    public function calculateDayAfterNewYearsDay(): void
     {
         $this->addHoliday(new Holiday('dayAfterNewYearsDay', [
             'en_US' => 'Day after New Year\'s Day',
@@ -107,7 +107,7 @@ class Romania extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateUnitedPrincipalitiesDay()
+    public function calculateUnitedPrincipalitiesDay(): void
     {
         // The law is official since 21.12.2014.
         if ($this->year > 2014) {
@@ -130,7 +130,7 @@ class Romania extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateStAndrewDay()
+    public function calculateStAndrewDay(): void
     {
         if ($this->year >= 2012) {
             $this->addHoliday(new Holiday('stAndrewDay', [
@@ -156,7 +156,7 @@ class Romania extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateNationalDay()
+    public function calculateNationalDay(): void
     {
         $national_day = null;
 
@@ -192,7 +192,7 @@ class Romania extends AbstractProvider
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateConstantinBrancusiDay()
+    public function calculateConstantinBrancusiDay(): void
     {
         if ($this->year >= 2016) {
             $this->addHoliday(new Holiday(
@@ -221,7 +221,7 @@ class Romania extends AbstractProvider
      * @throws \Exception
      * @throws \Exception
      */
-    public function calculateChildrensDay()
+    public function calculateChildrensDay(): void
     {
         if ($this->year >= 1950 && $this->year <= 2016) {
             $this->addHoliday(new Holiday(

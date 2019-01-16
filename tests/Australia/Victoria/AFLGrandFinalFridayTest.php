@@ -2,13 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Australia\Victoria;
@@ -26,10 +25,10 @@ class AFLGrandFinalFridayTest extends VictoriaBaseTestCase implements YasumiTest
     /**
      * The name of the holiday
      */
-    const HOLIDAY = 'aflGrandFinalFriday';
+    public const HOLIDAY = 'aflGrandFinalFriday';
 
-    const ESTABLISHMENT_YEAR = 2015;
-    const LAST_KNOWN_YEAR = 2018;
+    public const ESTABLISHMENT_YEAR = 2015;
+    public const LAST_KNOWN_YEAR = 2018;
 
     /**
      * Tests AFL Grand Final Friday
@@ -38,6 +37,9 @@ class AFLGrandFinalFridayTest extends VictoriaBaseTestCase implements YasumiTest
      *
      * @param int      $year     the year for which the holiday defined in this test needs to be tested
      * @param DateTime $expected the expected date
+     *
+     * @throws \ReflectionException
+     * @throws \Exception
      */
     public function testHoliday($year, $expected)
     {
@@ -52,8 +54,9 @@ class AFLGrandFinalFridayTest extends VictoriaBaseTestCase implements YasumiTest
 
     /**
      * Tests the translated name of the holiday defined in this test.
+     * @throws \ReflectionException
      */
-    public function testTranslation()
+    public function testTranslation(): void
     {
         $this->assertTranslatedHolidayName(
             $this->region,
@@ -65,8 +68,9 @@ class AFLGrandFinalFridayTest extends VictoriaBaseTestCase implements YasumiTest
 
     /**
      * Tests type of the holiday defined in this test.
+     * @throws \ReflectionException
      */
-    public function testHolidayType()
+    public function testHolidayType(): void
     {
         $this->assertHolidayType(
             $this->region,
@@ -78,6 +82,7 @@ class AFLGrandFinalFridayTest extends VictoriaBaseTestCase implements YasumiTest
 
     /**
      *  Tests that Holiday is not present before establishment year
+     * @throws \ReflectionException
      */
     public function testNotHoliday()
     {

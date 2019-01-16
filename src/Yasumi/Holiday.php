@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi;
@@ -25,32 +25,32 @@ class Holiday extends DateTime implements JsonSerializable
     /**
      * Type definition for Official (i.e. National/Federal) holidays.
      */
-    const TYPE_OFFICIAL = 'official';
+    public const TYPE_OFFICIAL = 'official';
 
     /**
      * Type definition for Observance holidays.
      */
-    const TYPE_OBSERVANCE = 'observance';
+    public const TYPE_OBSERVANCE = 'observance';
 
     /**
      * Type definition for seasonal holidays.
      */
-    const TYPE_SEASON = 'season';
+    public const TYPE_SEASON = 'season';
 
     /**
      * Type definition for Bank holidays.
      */
-    const TYPE_BANK = 'bank';
+    public const TYPE_BANK = 'bank';
 
     /**
      * Type definition for other type of holidays.
      */
-    const TYPE_OTHER = 'other';
+    public const TYPE_OTHER = 'other';
 
     /**
      * The default locale. Used for translations of holiday names and other text strings.
      */
-    const DEFAULT_LOCALE = 'en_US';
+    public const DEFAULT_LOCALE = 'en_US';
 
     /**
      * @var array list of all defined locales

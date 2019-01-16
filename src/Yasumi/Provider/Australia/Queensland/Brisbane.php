@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Australia\Queensland;
@@ -29,7 +29,7 @@ class Brisbane extends Queensland
      * country or sub-region. This one is not a proper ISO3166 code, but there isn't one specifically for Brisbane,
      * and I believe this is a logical extension.
      */
-    const ID = 'AU-QLD-BRI';
+    public const ID = 'AU-QLD-BRI';
 
     public $timezone = 'Australia/Brisbane';
 
@@ -40,7 +40,7 @@ class Brisbane extends Queensland
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -64,7 +64,7 @@ class Brisbane extends Queensland
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculatePeoplesDay()
+    public function calculatePeoplesDay(): void
     {
         $date = new DateTime('first friday of august ' . $this->year, new DateTimeZone($this->timezone));
         if ($date->format('d') < 5) {

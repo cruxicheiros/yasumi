@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Base;
@@ -30,8 +30,11 @@ class HolidayBetweenFilterTest extends TestCase
 
     /**
      * Tests the basic usage of the BetweenFilter.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testHolidaysBetweenDateRange()
+    public function testHolidaysBetweenDateRange(): void
     {
         $timezone = 'Europe/Amsterdam';
         $holidays = Yasumi::create('Netherlands', 2016);
@@ -82,8 +85,11 @@ class HolidayBetweenFilterTest extends TestCase
 
     /**
      * Tests the basic usage of the BetweenFilter using DateTimeImmutable objects.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testHolidaysBetweenDateRangeWithDateTimeImmutable()
+    public function testHolidaysBetweenDateRangeWithDateTimeImmutable(): void
     {
         $timezone = 'Europe/Amsterdam';
         $holidays = Yasumi::create('Netherlands', 2016);
@@ -134,8 +140,11 @@ class HolidayBetweenFilterTest extends TestCase
 
     /**
      * Tests that BetweenFilter considers the date and ignores timezones and time of day.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testHolidaysBetweenDateRangeDifferentTimezone()
+    public function testHolidaysBetweenDateRangeDifferentTimezone(): void
     {
         $holidays = Yasumi::create('Netherlands', 2016);
 
@@ -158,8 +167,11 @@ class HolidayBetweenFilterTest extends TestCase
 
     /**
      * Tests the BetweenFilter with date range where start and end date are exclusive of the comparison.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testHolidaysBetweenDateRangeExclusiveStartEndDate()
+    public function testHolidaysBetweenDateRangeExclusiveStartEndDate(): void
     {
         $timezone = 'Europe/Amsterdam';
         $holidays = Yasumi::create('Netherlands', 2016);
@@ -211,8 +223,11 @@ class HolidayBetweenFilterTest extends TestCase
 
     /**
      * Tests the BetweenFilter where the start date lies before the year of the Holiday Provider instance.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testHolidaysBetweenDateRangeWithStartBeforeInstanceYear()
+    public function testHolidaysBetweenDateRangeWithStartBeforeInstanceYear(): void
     {
         $year     = 2015;
         $timezone = 'Europe/Oslo';
@@ -248,8 +263,11 @@ class HolidayBetweenFilterTest extends TestCase
 
     /**
      * Tests the BetweenFilter where the end date lies beyond the year of the Holiday Provider instance.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testHolidaysBetweenDateRangeWithEndAfterInstanceYear()
+    public function testHolidaysBetweenDateRangeWithEndAfterInstanceYear(): void
     {
         $year     = 2000;
         $timezone = 'Europe/Rome';
@@ -287,8 +305,10 @@ class HolidayBetweenFilterTest extends TestCase
      * Tests that an InvalidArgumentException is thrown in case an invalid holiday provider is given.
      *
      * @expectedException InvalidArgumentException
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testWrongDates()
+    public function testWrongDates(): void
     {
         $year     = 2017;
         $timezone = 'America/New_York';
@@ -304,8 +324,11 @@ class HolidayBetweenFilterTest extends TestCase
      * Tests the BetweenFilter so that a substituted holiday is only counted once.
      *
      * This test covers the scenario that the requested date range covers all know holidays.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testCountBetweenWithSubstitutes()
+    public function testCountBetweenWithSubstitutes(): void
     {
         // There are official 12 holidays in Ireland in the year 2018, with 1 substituted holiday.
         $year     = 2018;
@@ -342,8 +365,11 @@ class HolidayBetweenFilterTest extends TestCase
      * Tests the BetweenFilter so that a substituted holiday is only counted once.
      *
      * This test covers the scenario that the requested date range excludes a substituted holiday.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testCountBetweenExcludingSubstituteHoliday()
+    public function testCountBetweenExcludingSubstituteHoliday(): void
     {
         // There are 2 official holidays in Ireland in the given date range, with 1 substituted holiday.
         $year     = 2018;
@@ -384,8 +410,11 @@ class HolidayBetweenFilterTest extends TestCase
      *
      * This test covers the scenario that the requested date range excludes a substituted holiday, but includes
      * the original substituted holiday.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testCountBetweenExcludingSubstituteHolidayIncludingOriginalHoliday()
+    public function testCountBetweenExcludingSubstituteHolidayIncludingOriginalHoliday(): void
     {
         // There are 2 official holidays in Ireland in the given date range, with 1 substituted holiday.
         $year     = 2018;
@@ -427,8 +456,11 @@ class HolidayBetweenFilterTest extends TestCase
      *
      * This test covers the scenario that the requested date range excludes a substituted holiday and also
      * the original substituted holiday.
+     *
+     * @throws \Exception
+     * @throws \ReflectionException
      */
-    public function testCountBetweenExcludingSubstituteHolidayAndOriginalHoliday()
+    public function testCountBetweenExcludingSubstituteHolidayAndOriginalHoliday(): void
     {
         // There is 1 official holidays in Ireland in the given date range.
         $year     = 2018;

@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Switzerland;
@@ -31,7 +31,7 @@ class Neuchatel extends Switzerland
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'CH-NE';
+    public const ID = 'CH-NE';
 
     /**
      * Initialize holidays for Neuchâtel (Switzerland).
@@ -41,7 +41,7 @@ class Neuchatel extends Switzerland
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -73,7 +73,7 @@ class Neuchatel extends Switzerland
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function calculateInstaurationRepublique()
+    public function calculateInstaurationRepublique(): void
     {
         if ($this->year > 1848) {
             $this->addHoliday(new Holiday(

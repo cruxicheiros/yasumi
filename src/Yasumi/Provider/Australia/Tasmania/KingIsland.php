@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Australia\Tasmania;
@@ -27,9 +27,7 @@ class KingIsland extends Tasmania
      * country or sub-region. This one is not a proper ISO3166 code, but there aren't any for areas within Tasmania,
      * and I believe it to be a logical extension.
      */
-    const ID = 'AU-TAS-KI';
-
-    public $timezone = 'Australia/Tasmania';
+    public const ID = 'AU-TAS-KI';
 
     /**
      * Initialize holidays for King Island (Australia).
@@ -38,7 +36,7 @@ class KingIsland extends Tasmania
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -50,7 +48,7 @@ class KingIsland extends Tasmania
      *
      * @throws \Exception
      */
-    public function calculateKingIslandShow()
+    public function calculateKingIslandShow(): void
     {
         $this->calculateHoliday(
             'kingIslandShow',

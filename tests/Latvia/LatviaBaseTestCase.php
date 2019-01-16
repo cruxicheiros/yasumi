@@ -3,12 +3,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Latvia;
@@ -28,15 +28,15 @@ abstract class LatviaBaseTestCase extends TestCase
     /**
      * Name of the country to be tested
      */
-    const REGION = 'Latvia';
+    public const REGION = 'Latvia';
 
     /**
      * Timezone in which this provider has holidays defined
      */
-    const TIMEZONE = 'Europe/Riga';
+    public const TIMEZONE = 'Europe/Riga';
 
     /**
      * Locale that is considered common for this provider
      */
-    const LOCALE = 'lv_LV';
+    public const LOCALE = 'lv_LV';
 }

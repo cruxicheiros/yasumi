@@ -2,13 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Sacha Telgenhof <stelgenhof@gmail.com>
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\tests\Australia\Victoria;
@@ -20,7 +19,6 @@ use Yasumi\Holiday;
  */
 class VictoriaTest extends VictoriaBaseTestCase
 {
-    public $region = 'Australia\Victoria';
 
     /**
      * @var int year random year number used for all tests in this Test Case
@@ -29,8 +27,9 @@ class VictoriaTest extends VictoriaBaseTestCase
 
     /**
      * Tests if all official holidays in Victoria (Australia) are defined by the provider class
+     * @throws \ReflectionException
      */
-    public function testOfficialHolidays()
+    public function testOfficialHolidays(): void
     {
         $this->assertDefinedHolidays([
             'newYearsDay',

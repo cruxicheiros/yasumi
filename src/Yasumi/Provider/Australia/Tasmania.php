@@ -2,12 +2,12 @@
 /**
  * This file is part of the Yasumi package.
  *
- * Copyright (c) 2015 - 2018 AzuyaLabs
+ * Copyright (c) 2015 - 2019 AzuyaLabs
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author William Sanders <williamrsanders@hotmail.com>
+ * @author Sacha Telgenhof <me@sachatelgenhof.com>
  */
 
 namespace Yasumi\Provider\Australia;
@@ -27,7 +27,7 @@ class Tasmania extends Australia
      * Code to identify this Holiday Provider. Typically this is the ISO3166 code corresponding to the respective
      * country or sub-region.
      */
-    const ID = 'AU-TAS';
+    public const ID = 'AU-TAS';
 
     public $timezone = 'Australia/Tasmania';
 
@@ -38,7 +38,7 @@ class Tasmania extends Australia
      * @throws \Yasumi\Exception\UnknownLocaleException
      * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
@@ -52,7 +52,7 @@ class Tasmania extends Australia
      *
      * @throws \Exception
      */
-    public function calculateEightHoursDay()
+    public function calculateEightHoursDay(): void
     {
         $date = new DateTime("second monday of march $this->year", new DateTimeZone($this->timezone));
 
@@ -74,7 +74,7 @@ class Tasmania extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function calculateQueensBirthday()
+    public function calculateQueensBirthday(): void
     {
         $this->calculateHoliday(
             'queensBirthday',
@@ -93,7 +93,7 @@ class Tasmania extends Australia
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public function calculateRecreationDay()
+    public function calculateRecreationDay(): void
     {
         $this->calculateHoliday(
             'recreationDay',
