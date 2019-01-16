@@ -63,15 +63,13 @@ class Canada extends AbstractProvider
          *
          * In Newfoundland and Labrador, Memorial Day (provincial holiday) is observed concurrently.
          *
+         * Canada Day is observed on July 1, unless that date falls on a Sunday, in which case July 2 is substituted.
+         *
          * https://www.canada.ca/en/canadian-heritage/services/canada-day-history.html
          * https://en.wikipedia.org/wiki/Canada_Day
          */
 
-        $this->addHoliday(new Holiday('canadaDay', [
-            'fr_CA' => 'Fête du Canada',
-            'en_CA' => 'Canada Day',
-            'en_US' => 'Canada Day'
-        ], new DateTime("$this->year-7-1", new DateTimeZone($this->timezone)), $this->locale));
+        $this->addHoliday($this->calculateCanadaDay());
 
 
         /**
@@ -87,6 +85,7 @@ class Canada extends AbstractProvider
             'en_CA' => 'Labour Day',
             'en_US' => 'Labour Day'
         ], new DateTime("first monday of september $this->year", new DateTimeZone($this->timezone)), $this->locale));
+
 
         /*
          * Holidays for federal employees
@@ -167,5 +166,24 @@ class Canada extends AbstractProvider
          * Observed holidays
          */
         $this->addHoliday($this->easter($this->year, $this->timezone, $this->locale, Holiday::TYPE_OBSERVANCE));
+    }
+
+    /**
+     * @return Holiday
+     * @throws \Exception
+     */
+    public function calculateCanadaDay()
+    {
+        $date = new DateTime("01-07-$this->year", new DateTimeZone($this->timezone));
+
+        if ($date->format('w') == 0) {  // If the date falls on a Sunday
+            $date = new DateTime("02-07-$this->year");
+        }
+
+        return new Holiday('canadaDay', [
+            'fr_CA' => 'Fête du Canada',
+            'en_CA' => 'Canada Day',
+            'en_US' => 'Canada Day'
+        ], $date, $this->locale);
     }
 }
